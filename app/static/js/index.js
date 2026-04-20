@@ -190,6 +190,15 @@ function gameLoop(currentTime) {
     gameOver = true;
     setupGameReset();
     score.setHighScore();
+    
+    fetch("score",{
+	method: "POST",
+	headers:{
+	   "Content-Type": "application/json",
+        },
+    body: JSON.stringify({score: Math.floor(score.score)}),
+    });
+
   }
 
   //Draw game objects
